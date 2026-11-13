@@ -1,0 +1,5 @@
+Sound effects in this folder are by Kenney (www.kenney.nl):
+"RPG Audio" and "Impact Sounds" packs.
+Licence: Creative Commons Zero (CC0)
+http://creativecommons.org/publicdomain/zero/1.0/
+Free to use in personal, educational and commercial projects. Credit is optional.
