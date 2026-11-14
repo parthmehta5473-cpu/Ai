@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--META-->
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">The AI Boardroom</p>
+        <h1>Pitch it in one sentence.<br>Four AI executives will argue about it.</h1>
+      </header>
+
+      <form id="pitch" autocomplete="off">
+        <label for="idea">Your startup idea</label>
+        <textarea id="idea" rows="3" placeholder="Uber, but for returning other people's online orders" required></textarea>
+        <div class="form-row">
+          <span id="count" aria-live="off"></span>
+          <button type="submit" id="submit">Face the board</button>
+        </div>
+        <p id="error" role="alert" hidden></p>
+      </form>
+
+      <section id="room" hidden aria-label="Boardroom debate">
+        <p id="pitched" class="pitched"></p>
+        <ol id="debate" aria-live="polite"></ol>
+        <p id="waiting" class="waiting">The board is reading your pitch…</p>
+      </section>
+
+      <section id="verdict" hidden aria-label="Verdict">
+        <img id="card" alt="" width="1200" height="630">
+        <div class="actions">
+          <button type="button" id="copy">Copy link</button>
+          <a id="tweet" target="_blank" rel="noopener">Post on X</a>
+          <a id="download" download="boardroom-verdict.png">Download card</a>
+          <a id="again" href="/">Pitch another</a>
+        </div>
+      </section>
+
+      <footer>For entertainment. Valuations are fictional and nothing here is investment advice.</footer>
+    </main>
+    <!--DATA-->
+    <script src="/app.js" defer></script>
+  </body>
+</html>

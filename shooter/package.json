@@ -1,0 +1,9 @@
+{
+  "name": "starline",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Browser vertical shooter with 100 generated levels and 10 bosses.",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

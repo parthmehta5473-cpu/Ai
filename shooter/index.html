@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#05070f">
+    <title>Starline</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <section id="menu" class="screen">
+      <div class="menu-inner">
+        <p class="eyebrow">100 levels · 10 bosses</p>
+        <h1>Starline</h1>
+        <p class="lede">Fly up through ten sectors of the galaxy. Your ship fires on its own; your job is to dodge.</p>
+        <div class="stack">
+          <button type="button" id="play" class="primary"></button>
+          <button type="button" id="choose">Choose level</button>
+          <button type="button" id="mute-menu" class="ghost" aria-pressed="true">Sound on</button>
+        </div>
+        <p id="progress-line" class="muted"></p>
+        <div class="howto">
+          <p><strong>Phone:</strong> drag anywhere on the screen. The ship follows your finger's movement, so your thumb never covers it.</p>
+          <p><strong>Computer:</strong> move the mouse, or use the arrow keys or WASD. P or Esc pauses, M mutes.</p>
+          <p>Catch the drops: <span class="chip power">P</span> more guns, <span class="chip heal">+</span> a heart, <span class="chip shield">S</span> shield, <span class="chip rapid">R</span> rapid fire.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="levels" class="screen" hidden>
+      <header class="levels-head">
+        <button type="button" id="levels-back">Back</button>
+        <h2>Choose level</h2>
+        <span id="star-total" class="muted"></span>
+      </header>
+      <div id="sectors"></div>
+    </section>
+
+    <section id="play-screen" class="screen" hidden>
+      <div class="stage">
+        <canvas id="game" aria-label="Game area. Drag or move the mouse to steer the ship."></canvas>
+        <button type="button" id="mute" class="pause mute" aria-label="Turn sound off">🔊</button>
+        <button type="button" id="pause" class="pause" aria-label="Pause">II</button>
+
+        <div id="paused" class="overlay" hidden>
+          <h2>Paused</h2>
+          <button type="button" id="resume" class="primary">Resume</button>
+          <button type="button" id="restart">Restart level</button>
+          <button type="button" id="quit">Levels</button>
+        </div>
+
+        <div id="result" class="overlay" hidden>
+          <p id="result-kicker" class="eyebrow"></p>
+          <h2 id="result-title"></h2>
+          <p id="result-stars" class="stars" aria-live="polite"></p>
+          <p id="result-detail" class="muted"></p>
+          <button type="button" id="next" class="primary">Next level</button>
+          <button type="button" id="retry">Retry</button>
+          <button type="button" id="to-levels">Levels</button>
+        </div>
+      </div>
+    </section>
+
+    <script src="engine.js"></script>
+    <script src="audio.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
