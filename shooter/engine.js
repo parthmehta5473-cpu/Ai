@@ -455,6 +455,7 @@
     p.fireCd -= DT;
     if (p.fireCd > 0) return;
     p.fireCd += p.rapid > 0 ? 0.09 : 0.15;
+    emit(g, { type: "shoot" });
     for (const [ox, a] of GUNS[p.power]) {
       g.shots.push({ x: p.x + ox, y: p.y - 14, vx: Math.sin(a) * SHOT_SPEED, vy: -Math.cos(a) * SHOT_SPEED });
     }

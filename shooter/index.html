@@ -16,11 +16,12 @@
         <div class="stack">
           <button type="button" id="play" class="primary"></button>
           <button type="button" id="choose">Choose level</button>
+          <button type="button" id="mute-menu" class="ghost" aria-pressed="true">Sound on</button>
         </div>
         <p id="progress-line" class="muted"></p>
         <div class="howto">
           <p><strong>Phone:</strong> drag anywhere on the screen. The ship follows your finger's movement, so your thumb never covers it.</p>
-          <p><strong>Computer:</strong> move the mouse, or use the arrow keys or WASD. P or Esc pauses.</p>
+          <p><strong>Computer:</strong> move the mouse, or use the arrow keys or WASD. P or Esc pauses, M mutes.</p>
           <p>Catch the drops: <span class="chip power">P</span> more guns, <span class="chip heal">+</span> a heart, <span class="chip shield">S</span> shield, <span class="chip rapid">R</span> rapid fire.</p>
         </div>
       </div>
@@ -38,6 +39,7 @@
     <section id="play-screen" class="screen" hidden>
       <div class="stage">
         <canvas id="game" aria-label="Game area. Drag or move the mouse to steer the ship."></canvas>
+        <button type="button" id="mute" class="pause mute" aria-label="Turn sound off">🔊</button>
         <button type="button" id="pause" class="pause" aria-label="Pause">II</button>
 
         <div id="paused" class="overlay" hidden>
@@ -60,6 +62,7 @@
     </section>
 
     <script src="engine.js"></script>
+    <script src="audio.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

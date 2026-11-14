@@ -7,8 +7,9 @@ A vertical space shooter for the browser: 100 levels across 10 sectors, with a b
 Open `index.html` in a browser. There is nothing to install or build. Progress (unlocked levels and stars) is saved in the browser.
 
 - **Phone:** drag anywhere. The ship moves by as much as your finger does, so your thumb never covers it.
-- **Computer:** move the mouse, or use the arrow keys or WASD. P or Esc pauses.
+- **Computer:** move the mouse, or use the arrow keys or WASD. P or Esc pauses, M mutes.
 - **Stars:** 3 for no hits, 2 for one hit, 1 otherwise.
+- **Sound:** effects are generated in the browser (no audio files). Toggle with the speaker button or M; the choice is remembered.
 - **Drops:** P adds guns (up to 5 levels), + restores a heart, S is a shield that absorbs one hit, R is rapid fire.
 
 ## How the 100 levels are made

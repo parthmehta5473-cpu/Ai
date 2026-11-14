@@ -1,6 +1,7 @@
 (function () {
   "use strict";
   const S = window.Shooter;
+  const A = window.ShooterAudio;
   const { W, H, DT } = S;
   const STORE = "starline-progress-v1";
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -113,6 +114,8 @@
     $("paused").hidden = true;
     $("result").hidden = true;
     $("pause").hidden = false;
+    A.unlock();
+    A.pause(false);
     show("play");
     canvas.focus?.();
   }
@@ -120,6 +123,7 @@
   function setPaused(value) {
     if (!game || game.status !== "playing") return;
     paused = value;
+    A.pause(value);
     $("paused").hidden = !value;
     $("pause").hidden = value;
     if (value) $("resume").focus();
@@ -156,6 +160,25 @@
     (won && n < S.LEVELS ? $("next") : $("retry")).focus();
   }
 
+  function renderMute() {
+    for (const id of ["mute", "mute-menu"]) {
+      const b = $(id);
+      b.textContent = A.muted ? "Sound off" : "Sound on";
+      b.setAttribute("aria-pressed", String(!A.muted));
+    }
+    $("mute").textContent = A.muted ? "🔇" : "🔊";
+    $("mute").setAttribute("aria-label", A.muted ? "Turn sound on" : "Turn sound off");
+  }
+  const toggleMute = () => {
+    A.setMuted(!A.muted);
+    renderMute();
+  };
+  $("mute").addEventListener("click", toggleMute);
+  $("mute-menu").addEventListener("click", toggleMute);
+  // Browsers only start audio after a user gesture.
+  addEventListener("pointerdown", () => A.unlock(), { capture: true });
+  addEventListener("keydown", () => A.unlock(), { capture: true });
+
   $("play").addEventListener("click", () => startLevel(progress.unlocked));
   $("choose").addEventListener("click", renderLevels);
   $("levels-back").addEventListener("click", renderMenu);
@@ -179,6 +202,10 @@
 
   addEventListener("keydown", (e) => {
     if (!game || screens.play.hidden) return;
+    if (e.key === "m" || e.key === "M") {
+      toggleMute();
+      return;
+    }
     if (e.key === "Escape" || e.key === "p" || e.key === "P") {
       setPaused(!paused);
       e.preventDefault();
@@ -265,6 +292,7 @@
     const events = game.events;
     game.events = [];
     for (const ev of events) {
+      A.play(ev.type, ev.type === "explode" ? Math.min(4, ev.size) : ev.kind);
       if (ev.type === "explode") {
         const hue = ev.color === "boss" ? game.spec.hue : ENEMY_HUE[ev.color] ?? 30;
         burst(ev.x, ev.y, 10 + ev.size * 10, hue, 90 + ev.size * 60, 0.5 + ev.size * 0.15);
@@ -638,8 +666,10 @@
       return progress;
     },
     start: startLevel,
+    audio: A,
   };
 
+  renderMute();
   renderMenu();
   requestAnimationFrame(frame);
 })();

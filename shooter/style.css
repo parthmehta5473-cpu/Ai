@@ -195,6 +195,10 @@ canvas {
   letter-spacing: -1px;
 }
 
+.pause.mute { right: 56px; font-size: 16px; letter-spacing: 0; }
+
+.stack button.ghost { padding: 10px 20px; font-size: 15px; background: transparent; color: var(--muted); }
+
 .overlay {
   position: absolute;
   inset: 0;
